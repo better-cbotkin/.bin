@@ -1,0 +1,4 @@
+#!/bin/bash
+BASE_DIRECTORY=`git rev-parse --show-toplevel`
+git status --porcelain | grep -v "?? " | sed s/^...// | awk -v prefix="$BASE_DIRECTORY/" '{print prefix $0}' | tr '\n' ' '
+
